@@ -1,0 +1,20 @@
+server:
+  port: 8769
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      #config-server相关配置
+      server:
+        git:
+          uri: https://gitee.com/NaNiZhenShiYiJiBang/cloud-config.git
+          search-paths: respo
+          username: xzjayx@126.com
+          password: xiezhi19951205gi
+        default-label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+

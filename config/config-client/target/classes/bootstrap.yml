@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config-server
+  profiles:
+    active: dev
+  #通过消息总线更改配置，需要经过安全验证，为了演示demo，先屏蔽安全验证
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+

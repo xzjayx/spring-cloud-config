@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>config</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.example</groupId>
+    <artifactId>config-client</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>config-client</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 注册到eureka server里面构建高可用-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+
+
+        <!-- 消息总线 spring cloud bus 可选的消息代理总线 RabbitMQ,AMQP,Kafka 可以刷新配置
+
+        如果有几十个微服务，而每 个服务又是多实例，当更改配置时，需要重新启动多个微服
+        务实例，会非常麻烦。 Spring Cloud Bus 个功能就是让这个过程变得简单，当远程 Git
+        库的配置更改后，只需要向某 个微服务实例发送 Post 请求，通过消息组件通知其他微
+        服务实例重新拉取配置文件。 当远程 Git 仓库的配置更改后，通过发送
+        “ /bus-refresh ” Post 请求给某 个微服务实例，通过消息组件，通知其他微服务实例，更新配置文件。
+        -->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+
+        <!-- 2.0需要加上这个监控中心-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
